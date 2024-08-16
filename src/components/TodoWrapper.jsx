@@ -11,11 +11,14 @@ function TodoWrapper() {
       { id: uuidv4(), task: todo, completed: false, isEditing: false },
     ]);
   };
+  const deleteTodo = (id) => setTodos(todos.filter((todo) => todo.id !== id));
   return (
     <div className='TodoWrapper'>
       <h1>Get Things Done !</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoList />
+      {todos.map((todo, index) => (
+        <TodoList task={todo} key={index} deleteTodo={deleteTodo} />
+      ))}
     </div>
   );
 }

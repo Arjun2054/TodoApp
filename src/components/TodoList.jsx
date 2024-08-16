@@ -1,12 +1,16 @@
+/* eslint-disable react/prop-types */
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteSweep } from "react-icons/md";
-const TodoList = () => {
+const TodoList = ({ task, deleteTodo }) => {
   return (
     <div className='Todo'>
-      <p>Go To The School</p>
+      <p>{task.task}</p>
       <div>
         <FaEdit className='edit-icon' />
-        <MdDeleteSweep className='delete-icon ' />
+        <MdDeleteSweep
+          className='delete-icon '
+          onClick={() => deleteTodo(task.id)}
+        />
       </div>
     </div>
   );
